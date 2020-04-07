@@ -25,15 +25,25 @@
 
 // 	return len
 // };
+// var removeDuplicates = function (nums) {
+// 	let arr = []
+// 	for (const e of nums) {
+// 		if (arr.indexOf(e) == -1) {
+// 			arr.push(e)
+// 			nums[arr.length - 1] = e
+// 		}
+// 	}
+// 	return arr.length
+// };
 var removeDuplicates = function (nums) {
-	let arr = []
+	let i = 0
 	for (const e of nums) {
-		if (arr.indexOf(e) == -1) {
-			arr.push(e)
-			nums[arr.length - 1] = e
+		if (nums[i] != e) {
+			i++
+			nums[i] = e
 		}
 	}
-	return arr.length
+	return i + 1
 };
 // @lc code=end
 
