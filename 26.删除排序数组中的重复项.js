@@ -35,15 +35,26 @@
 // 	}
 // 	return arr.length
 // };
+// var removeDuplicates = function (nums) {
+// 	let i = 0
+// 	for (const e of nums) {
+// 		if (nums.slice(0,i).indexOf(e) == -1) {
+// 			nums[i] = e
+// 			i++
+// 		}
+// 	}
+// 	return i
+// };
 var removeDuplicates = function (nums) {
 	let i = 0
-	for (const e of nums) {
-		if (nums[i] != e) {
+	let len = nums.length
+	for (let j = 0; j < len; j++) {
+		if (nums[j] != nums[j + 1]) {
+			nums[i] = nums[j]
 			i++
-			nums[i] = e
 		}
 	}
-	return i + 1
+	return i
 };
 // @lc code=end
 
