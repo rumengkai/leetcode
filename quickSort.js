@@ -36,12 +36,13 @@ for (let i = 0; i < 20; i++) {
 // 一行快排
 var quickSort = arr => arr.length <= 1 ? arr : quickSort(arr.filter(x => x < arr[0])).concat(arr.filter(x => x === arr[0]), quickSort(arr.filter(x => x > arr[0])))
 
-console.log(new Date().getTime())
-console.log(arr.sort((x, y) => x - y))
-console.log(new Date().getTime())
+// Test:
+// console.log(new Date().getTime())
+// console.log(arr.sort((x, y) => x - y))
+// console.log(new Date().getTime())
 
-console.log(new Date().getTime())
-console.log(quickSort(arr))
-console.log(new Date().getTime())
+// console.log(new Date().getTime())
+// console.log(quickSort(arr))
+// console.log(new Date().getTime())
 
 
