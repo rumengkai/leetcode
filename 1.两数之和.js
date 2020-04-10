@@ -1,77 +1,67 @@
 /*
- * @lc app=leetcode.cn id=5 lang=javascript
+ * @lc app=leetcode.cn id=1 lang=javascript
  *
- * [5] 最长回文子串
+ * [1] 两数之和
+ *
+ * https://leetcode-cn.com/problems/two-sum/description/
+ *
+ * algorithms
+ * Easy (46.72%)
+ * Likes:    7868
+ * Dislikes: 0
+ * Total Accepted:    911.8K
+ * Total Submissions: 1.9M
+ * Testcase Example:  '[2,7,11,15]\n9'
+ *
+ * 给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。
+ * 
+ * 你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。
+ * 
+ * 示例:
+ * 
+ * 给定 nums = [2, 7, 11, 15], target = 9
+ * 
+ * 因为 nums[0] + nums[1] = 2 + 7 = 9
+ * 所以返回 [0, 1]
+ * 
+ * 
  */
 
 // @lc code=start
 /**
- * @param {string} s
- * @return {string}
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
  */
-// var longestPalindrome = function(s) {
-//     var len = s.length;
-//     if (len<2) {
-//         return s
-//     }
-//     var res = [0,0]
-//     function find(left,right) {
-//         if (s[left]!=s[right]) {
-//             return [left,left]
-//         }
-//         while (left>=0&&right<len&&s[left]==s[right]) {
-//             if (s[left-1]!=s[right+1]||left-1<0||right>=len) {
-//                 return [left,right]
-//             } else {
-//                 left--
-//                 right++
-//             }
-//         }
-//         return [left,right]
-//     }
-//     for (let i = 0; i < len; i++) {
-//         var a1 = find(i,i+1) // 如果中间是相同的字母
-//         var a2 = find(i,i) // 如果中间是一个字母
-//         var temp 
-//         if (a1[1]-a1[0]>a2[1]-a2[0]) {
-//             temp = a1
-//         } else {
-//             temp = a2
-//         }
-//         if (temp[1]-temp[0]>res[1]-res[0]) {
-//             res = temp
-//         }
-//     }
-//     return s.slice(res[0],res[1]+1)
+// var twoSum = function (nums, target) {
+// 	let i = nums.length;
+// 	while (i > 1) {
+// 		let last = nums.pop();
+// 		if (nums.indexOf(target - last) > -1) {
+// 			return [nums.indexOf(target - last), nums.length]
+// 		}
+// 		i--
+// 	}
+// };
+var twoSum = function (nums, target) {
+	var temp = [];
+	for (var i = 0; i < nums.length; i++) {
+		var dif = target - nums[i];
+		if (temp[dif] != undefined) {
+			return [temp[dif], i];
+		}
+		temp[nums[i]] = i;
+	}
+};
+// var twoSum = function (nums, target) {
+// 	for (var i = 0; i < nums.length; i++) {
+// 		let dif = target - nums[i];
+// 		let j = nums.slice(i + 1).indexOf(dif)
+// 		if (j > -1) {
+// 			return [i, j + i + 1];
+// 		}
+// 	}
 // };
 
-var longestPalindrome = function (s) {
-	if (!s || s.length < 2) {
-		return s;
-	}
-	let start = 0, end = 0;
-	let n = s.length;
-	// 中心扩展法
-	let centerExpend = (left, right) => {
-		while (left >= 0 && right < n && s[left] == s[right]) {
-			left--;
-			right++;
-		}
-		return right - left - 1;
-	}
-	for (let i = 0; i < n; i++) {
-		let len1 = centerExpend(i, i);
-		let len2 = centerExpend(i, i + 1);
-		// 两种组合取最大回文串的长度
-		let maxLen = Math.max(len1, len2);
-		if (maxLen > end - start) {
-			// 更新最大回文串的首尾字符索引
-			start = i - ((maxLen - 1) >> 1);
-			end = i + (maxLen >> 1);
-		}
-	}
-	return s.substring(start, end + 1);
-};
-
-
 // @lc code=end
+
