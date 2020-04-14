@@ -43,25 +43,25 @@
 //     return result > max || result < min ? 0 : result
 // };
 
-var reverse = function(x) {
-  let fh = "",
-    re;
-  if (x < 0) {
-    fh = "-";
-    x = 0 - x;
-  }
-  re = String(x)
-    .split("")
-    .reverse()
-    .join("");
-  if (
-    re.length > 10 ||
-    (re.length === 10 && re > (fh === "-" ? "2147483648" : "2147483647"))
-  ) {
-    return 0;
-  } else {
-    return fh + re;
-  }
+var reverse = function (x) {
+	let fh = "",
+		re;
+	if (x < 0) {
+		fh = "-";
+		x = 0 - x;
+	}
+	re = String(x)
+		.split("")
+		.reverse()
+		.join("");
+	if (
+		re.length > 10 ||
+		(re.length === 10 && re > (fh === "-" ? "2147483648" : "2147483647"))
+	) {
+		return 0;
+	} else {
+		return fh + re;
+	}
 };
 
 // @lc code=end

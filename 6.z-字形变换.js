@@ -51,30 +51,30 @@
 //     return res
 // };
 // 统一左移，O(n)
-var convert = function(s, numRows) {
-    var len = s.length
-    var pointer = true // 为true时，向下，为false时，向上
-    if (len<2||len==''|| numRows ==1) {
-        return s
-    }
-    var row = Math.min(len,numRows)
-    var res = new Array()
-    for (let i = 0; i < row; i++) {
-        res[i] = ''
-    }
-    var i = 0
-    for(const e of s){
-        res[i] += e
-        if (i>=row-1&&pointer==true) {
-            pointer = !pointer
-        }
-        if (i==0&&pointer==false) {
-            pointer = !pointer
-        }
-        i+=pointer?1:-1
-    }
-    var ans = res.join('')
-    return ans
+var convert = function (s, numRows) {
+	var len = s.length
+	var pointer = true // 为true时，向下，为false时，向上
+	if (len < 2 || len == '' || numRows == 1) {
+		return s
+	}
+	var row = Math.min(len, numRows)
+	var res = new Array()
+	for (let i = 0; i < row; i++) {
+		res[i] = ''
+	}
+	var i = 0
+	for (const e of s) {
+		res[i] += e
+		if (i >= row - 1 && pointer == true) {
+			pointer = !pointer
+		}
+		if (i == 0 && pointer == false) {
+			pointer = !pointer
+		}
+		i += pointer ? 1 : -1
+	}
+	var ans = res.join('')
+	return ans
 };
 // @lc code=end
 
