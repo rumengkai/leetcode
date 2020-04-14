@@ -102,10 +102,11 @@
 // 	}
 // 	return res
 // };
+// [2,3,1,1,4,1,1]
 var jump = function (nums) {
 	var steps = 0;
-	var canJumpMax = 0;
-	var last_canJumpMax = 0;
+	var canJumpMax = 0;  // 本次最远能到达的位置
+	var last_canJumpMax = 0; // 下次最远能到达的位置
 	var len = nums.length;
 	for (var i = 0; i < len - 1; i++) {
 		canJumpMax = Math.max(canJumpMax, i + nums[i]);

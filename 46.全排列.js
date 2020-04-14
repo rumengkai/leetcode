@@ -55,45 +55,30 @@
 // 	backtrack(tmpPath);
 // 	return res;
 // };
-
-
-
-/**
- * @description 给定一个没有重复数字的序列，返回其所有可能的全排列。
- * @param {number[]} nums
- * @return {number[][]}
- */
-var permute = function (nums) {
-	const len = nums.length;
-	const res = [];
-	dfs([], 0, len, nums, res);
-	return res;
+var swap = function (nums, i, j) {
+	if (i === j)
+		return;
+	[nums[i], nums[j]] = [nums[j], nums[i]]
 };
-/**
- *  
- * @param {number[]} cur 
- * @param {number} index 
- * @param {number} len 
- * @param {number[]} nums 
- * @param {[]} res 
- */
-var dfs = (cur, index, len, nums, res) => {
-	if (cur.length === len) {
-		res.push(cur.concat());
+
+var cal = function (nums, first, result) {
+	if (nums.length === first) {
+		result.push([...nums]);
 		return;
 	}
-	for (let i = index; i < nums.length; i++) {
-		swap(nums, i, index);
-		cur.push(nums[index]);
-		dfs(cur, index + 1, len, nums, res);
-		cur.pop();
-		swap(nums, i, index);
+
+	for (let i = first; i < nums.length; i++) {
+		swap(nums, first, i);
+		cal(nums, first + 1, result);
+		swap(nums, first, i);
 	}
-}
-
-var swap = (nums, i, j) => {
-	[nums[i], nums[j]] = [nums[j], nums[i]];
-}
-
+};
+var permute = function (nums) {
+	if (nums == null)
+		return;
+	const res = [];
+	cal(nums, 0, res);
+	return res;
+};
 // @lc code=end
 
