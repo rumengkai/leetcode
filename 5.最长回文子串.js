@@ -10,45 +10,45 @@
  * @param {string} s
  * @return {string}
  */
-var longestPalindrome = function(s) {
-    var len = s.length;
-    if (len<2) {
-        return s
-    }
-    var res = [0,0]
-    function find(left,right) {
-        if (s[left]!=s[right]) {
-            return [left,left]
-        }
-        while (left>=0&&right<len&&s[left]==s[right]) {
-            if (s[left-1]!=s[right+1]||left-1<0||right>=len) {
-                return [left,right]
-            } else {
-                left--
-                right++
-            }
-        }
-        return [left,right]
-    }
-    for (let i = 0; i < len; i++) {
-        var a1 = find(i,i+1) // 如果中间是相同的字母
-        var a2 = find(i,i) // 如果中间是一个字母
-        var temp 
-        if (a1[1]-a1[0]>a2[1]-a2[0]) {
-            temp = a1
-        } else {
-            temp = a2
-        }
-        if (temp[1]-temp[0]>res[1]-res[0]) {
-            res = temp
-        }
-    }
-    return s.slice(res[0],res[1]+1)
+var longestPalindrome = function (s) {
+	var len = s.length;
+	if (len < 2) {
+		return s
+	}
+	var res = [0, 0]
+	function find (left, right) {
+		if (s[left] != s[right]) {
+			return [left, left]
+		}
+		while (left >= 0 && right < len && s[left] == s[right]) {
+			if (s[left - 1] != s[right + 1] || left - 1 < 0 || right >= len) {
+				return [left, right]
+			} else {
+				left--
+				right++
+			}
+		}
+		return [left, right]
+	}
+	for (let i = 0; i < len; i++) {
+		var a1 = find(i, i + 1) // 如果中间是相同的字母
+		var a2 = find(i, i) // 如果中间是一个字母
+		var temp
+		if (a1[1] - a1[0] > a2[1] - a2[0]) {
+			temp = a1
+		} else {
+			temp = a2
+		}
+		if (temp[1] - temp[0] > res[1] - res[0]) {
+			res = temp
+		}
+	}
+	return s.slice(res[0], res[1] + 1)
 };
 
 /**
  * leetcode 解法，中心扩展法，效率高
- * @param {*} s 
+ * @param {*} s
  */
 // var longestPalindrome = function(s) {
 //     if(!s || s.length < 2){
