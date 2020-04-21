@@ -49,7 +49,7 @@
 // 	return res
 // };
 
-
+// 快慢双指针
 var removeNthFromEnd = function (head, n) {
 	let preHead = new ListNode(-1);
 	preHead.next = head;
