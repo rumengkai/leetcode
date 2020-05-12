@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "strict": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false
+  },
+  "include": ["./"],
+  "exclude": ["node_modules"]
+}

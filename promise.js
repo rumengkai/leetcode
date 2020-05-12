@@ -24,7 +24,7 @@ var p1 = new Promise((res, rej) => {
 		res(11)
 	}, 2000)
 });
-p2 = new Promise((res, rej) => {
+var p2 = new Promise((res, rej) => {
 	setTimeout(() => {
 		rej(222222)
 	}, 500)
@@ -32,7 +32,7 @@ p2 = new Promise((res, rej) => {
 		res(22)
 	}, 1000)
 });
-p3 = new Promise((res, rej) => {
+var p3 = new Promise((res, rej) => {
 	setTimeout(() => {
 		res(33)
 	}, 3000)
